@@ -1,0 +1,135 @@
+/* Set a background color for the body */
+body {
+  background-color: #f8f9fa;
+}
+
+/* Add some padding to the top and sides of the page */
+body {
+  padding-top: 50px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* Center the page title */
+h1 {
+  text-align: center;
+}
+
+/* Add some margin below the page title */
+h1 {
+  margin-bottom: 30px;
+}
+
+/* Add some margin below the page title */
+h3 {
+  margin-bottom: 30px;
+  margin-left: 20%!important;
+}
+
+/* Style the form */
+.form {
+  max-width: 800px;
+  margin: auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  margin-bottom: 30px;
+}
+
+/* Style the form title */
+.form-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Style the form input label */
+.form-label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Style the file input button */
+.form-control-file {
+  display: inline-block;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+/* Style the form submit button */
+.btn-submit {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-submit:hover {
+  background-color: #0069d9;
+}
+
+/* Center the form and buttons */
+.form-wrapper,
+.button-wrapper {
+  text-align: center;
+}
+
+/* Add margins to the button wrapper */
+.button-wrapper {
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+/* Style the HTML table */
+.table {
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
+  background-color: #fff;
+  border-collapse: collapse;
+  border: 1px solid #dee2e6;
+}
+
+.table th,
+.table td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #dee2e6;
+}
+
+.table th {
+  background-color: #e9ecef;
+  font-weight: bold;
+}
+
+.table tbody tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+.table tbody tr:hover {
+  background-color: #ddd;
+}
+
+/* Style the editable fields */
+[contenteditable="true"] {
+  outline: none;
+  cursor: text;
+}
+
+[contenteditable="true"]:focus {
+  background-color: #f7f7f7;
+  border: 1px solid #999;
+}
+
+input[type=file] {
+  /* display: block; */
+  display: inline;
+}
+.form-control-file-wrapper {
+  text-align: center;
+}
