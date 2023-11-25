@@ -5,7 +5,7 @@ body {
 
 /* Add some padding to the top and sides of the page */
 body {
-  padding-top: 50px;
+  padding-top: 0px;
   padding-left: 20px;
   padding-right: 20px;
 }
@@ -13,11 +13,59 @@ body {
 /* Center the page title */
 h1 {
   text-align: center;
+  margin-bottom: 30px;
 }
 
-/* Add some margin below the page title */
-h1 {
-  margin-bottom: 30px;
+.encrypt-js-forms-container {
+  display: block;
+  height: 20vh;
+}
+
+h1.encrypt-js-header {
+  color:ivory;
+  background-color:purple;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.encrypt-js-table-header-label {
+  background-color: rgb(180, 47, 158);
+  color:white;
+  margin-right: 23vw;
+  padding-top:5px;
+  padding-bottom:5px;
+}
+
+.encrypt-js-alert {
+  z-index: 100;
+  text-align: center;
+  /* float: right; */
+  /* box-sizing: content-box;
+  width: 150px;
+  height: 100px; */
+  position: absolute;
+  right: 25vw;
+}
+
+.encrypt-js-passphrase-window {
+  z-index: 100;
+  text-align: left;
+  position: absolute;
+  left: 10vw;
+}
+
+.encrypt-js-base-encrypt-window {
+  text-align: left;
+  position: absolute;
+  right: 10vw;
+}
+
+.encrypt-js-copy-icon {
+  float: left;
+  left: 0.3vw;
+  cursor: pointer;
+  padding-top: 0.4vh;
+  padding-right: 0.3vw;
 }
 
 /* Add some margin below the page title */
@@ -76,7 +124,8 @@ h3 {
 /* Center the form and buttons */
 .form-wrapper,
 .button-wrapper {
-  text-align: center;
+  text-align: left;
+  padding-left: 30vw;
 }
 
 /* Add margins to the button wrapper */
@@ -131,5 +180,5 @@ input[type=file] {
   display: inline;
 }
 .form-control-file-wrapper {
-  text-align: center;
+  text-align: left;
 }
