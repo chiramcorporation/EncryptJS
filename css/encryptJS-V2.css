@@ -1,0 +1,813 @@
+/* ==========================================================================
+   Chiram Design System — EncryptJS Theme (V2)
+   Theme: Dual Theme (Dark Premium & Warm Light) + Glassmorphism + Orange Brand
+   Origin: THEME.md
+   ========================================================================== */
+
+/* 1. Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&display=swap');
+
+/* 2. Design Tokens — Dark Theme (Default) */
+:root,
+[data-theme="dark"] {
+  /* Brand */
+  --brand:             #cc6611;                    /* Primary orange */
+  --brand-light:       #e07830;                    /* Hover / lighter orange */
+  --brand-glow:        rgba(204, 102, 17, 0.35);   /* Glow / shadow tint */
+
+  /* Backgrounds */
+  --bg-dark:           #0f0e0c;                    /* Page background */
+  --bg-card:           rgba(255, 255, 255, 0.05);  /* Glass card surface */
+  --bg-card-hover:     rgba(255, 255, 255, 0.09);  /* Glass card on hover */
+
+  /* Borders */
+  --border-glass:      rgba(255, 255, 255, 0.10);  /* Subtle glass border */
+
+  /* Text */
+  --text-primary:      #f0ede8;   /* Headings, body */
+  --text-secondary:    #a89880;   /* Subheadings, descriptions */
+  --text-muted:        #786b5d;   /* Captions, metadata, footer */
+
+  /* Shape */
+  --radius-card:       16px;      /* Cards, panels */
+  --radius-btn:        8px;       /* Buttons */
+
+  /* Effects */
+  --shadow-glow:       0 0 40px rgba(204, 102, 17, 0.18);
+  --shadow-card:       0 4px 20px rgba(0, 0, 0, 0.25);
+  --shadow-card-hover: 0 12px 40px rgba(0, 0, 0, 0.45);
+  --transition:        0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Form & Component Tokens */
+  --input-bg:          rgba(255, 255, 255, 0.05);
+  --input-bg-focus:    rgba(255, 255, 255, 0.08);
+  --input-border:      rgba(255, 255, 255, 0.12);
+  --output-bg:         rgba(204, 102, 17, 0.16);
+  --output-border:     rgba(204, 102, 17, 0.42);
+  --output-color:      #ffe8d4;
+  --table-bg:          rgba(255, 255, 255, 0.04);
+  --table-th-bg:       rgba(255, 255, 255, 0.06);
+  --table-row-odd:     rgba(255, 255, 255, 0.025);
+  --table-row-hover:   rgba(255, 255, 255, 0.07);
+  --table-input-bg:    rgba(0, 0, 0, 0.4);
+  --toggle-btn-bg:     rgba(255, 255, 255, 0.07);
+
+  /* Body Gradients */
+  --body-radial-1:     radial-gradient(ellipse 80% 50% at 50% -10%, rgba(204, 102, 17, 0.20) 0%, transparent 60%);
+  --body-radial-2:     radial-gradient(ellipse 60% 40% at 80% 100%, rgba(204, 102, 17, 0.10) 0%, transparent 50%);
+  --heading-gradient:  linear-gradient(135deg, #ffffff 0%, #ecd8c3 55%, var(--brand) 100%);
+
+  /* Fonts */
+  --font-main:         'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display:      'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* 2.1 Design Tokens — Light Theme */
+[data-theme="light"] {
+  /* Brand */
+  --brand:             #b85507;                    /* Richer orange for accessible light contrast */
+  --brand-light:       #d26715;                    /* Hover orange */
+  --brand-glow:        rgba(184, 85, 7, 0.25);
+
+  /* Backgrounds */
+  --bg-dark:           #f7f4ee;                    /* Warm premium cream background */
+  --bg-card:           rgba(255, 255, 255, 0.82);  /* Crisp frosted glass card */
+  --bg-card-hover:     rgba(255, 255, 255, 0.96);
+
+  /* Borders */
+  --border-glass:      rgba(0, 0, 0, 0.09);        /* Subtle warm gray border */
+
+  /* Text */
+  --text-primary:      #1f1a14;   /* Headings, high contrast */
+  --text-secondary:    #55493d;   /* Subheadings, descriptions */
+  --text-muted:        #877868;   /* Captions, metadata */
+
+  /* Effects */
+  --shadow-glow:       0 0 35px rgba(184, 85, 7, 0.14);
+  --shadow-card:       0 4px 20px rgba(0, 0, 0, 0.05);
+  --shadow-card-hover: 0 12px 35px rgba(0, 0, 0, 0.11);
+
+  /* Form & Component Tokens */
+  --input-bg:          #ffffff;
+  --input-bg-focus:    #ffffff;
+  --input-border:      rgba(0, 0, 0, 0.15);
+  --output-bg:         rgba(184, 85, 7, 0.10);
+  --output-border:     rgba(184, 85, 7, 0.35);
+  --output-color:      #7c3400;
+  --table-bg:          rgba(255, 255, 255, 0.88);
+  --table-th-bg:       rgba(0, 0, 0, 0.04);
+  --table-row-odd:     rgba(0, 0, 0, 0.02);
+  --table-row-hover:   rgba(184, 85, 7, 0.06);
+  --table-input-bg:    #ffffff;
+  --toggle-btn-bg:     rgba(255, 255, 255, 0.9);
+
+  /* Body Gradients */
+  --body-radial-1:     radial-gradient(ellipse 80% 50% at 50% -10%, rgba(184, 85, 7, 0.10) 0%, transparent 60%);
+  --body-radial-2:     radial-gradient(ellipse 60% 40% at 80% 100%, rgba(184, 85, 7, 0.05) 0%, transparent 50%);
+  --heading-gradient:  linear-gradient(135deg, #1b1611 0%, #46392d 55%, var(--brand) 100%);
+}
+
+/* 3. Base & Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 2.5rem 1.75rem 4.5rem;
+  background-color: var(--bg-dark);
+  background-image: var(--body-radial-1), var(--body-radial-2);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  font-family: var(--font-main);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* 4. Top Header & Theme Switcher Bar */
+.top-nav-bar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto 1rem;
+}
+
+.theme-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.55rem 1.1rem;
+  background: var(--toggle-btn-bg);
+  border: 1px solid var(--border-glass);
+  border-radius: 999px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: var(--text-primary);
+  font-family: var(--font-main);
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition);
+  box-shadow: var(--shadow-card);
+  user-select: none;
+}
+
+.theme-toggle-btn:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--brand);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card-hover), var(--shadow-glow);
+  color: var(--brand);
+}
+
+.theme-toggle-icon {
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.site-header-wrapper {
+  text-align: center;
+  max-width: 900px;
+  margin: 0.5rem auto 2.75rem;
+}
+
+/* 5. Typography Scale (Enhanced for Better Readability) */
+h1, .h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 3.8rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -1.2px;
+  text-align: center;
+  background: var(--heading-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0.5rem 0 1.5rem;
+}
+
+h1.encrypt-js-header {
+  color: unset;
+  background-color: transparent;
+  padding: 0;
+  margin-bottom: 2rem;
+}
+
+h1.encrypt-js-header b {
+  font-family: var(--font-display);
+  font-weight: 800;
+  color: var(--brand);
+  -webkit-text-fill-color: var(--brand);
+}
+
+h2, .h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3.5vw, 2.3rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+  line-height: 1.25;
+}
+
+h3, .h3 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.35;
+  margin: 0;
+}
+
+p {
+  font-family: var(--font-main);
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-weight: 400;
+  margin-top: 0;
+}
+
+/* Section Label & Badges */
+.section-label {
+  display: inline-block;
+  font-size: 0.82rem;                     /* Increased for clarity */
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brand);
+  margin-bottom: 0.65rem;
+  font-family: var(--font-display);
+}
+
+/* 6. Alerts & Toasts */
+.encrypt-js-alert {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 9999;
+  min-width: 300px;
+  max-width: 440px;
+  padding: 1.1rem 1.5rem;
+  border-radius: var(--radius-btn);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  font-family: var(--font-main);
+  font-size: 0.98rem;
+  font-weight: 600;
+  text-align: left;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4), var(--shadow-glow);
+  border: 1px solid var(--border-glass);
+  animation: toastSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes toastSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-16px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.encrypt-js-alert.alert-success {
+  background: rgba(18, 53, 36, 0.94) !important;
+  color: #a3e635 !important;
+  border-color: rgba(74, 222, 128, 0.4) !important;
+}
+
+.encrypt-js-alert.alert-danger {
+  background: rgba(69, 10, 10, 0.94) !important;
+  color: #fca5a5 !important;
+  border-color: rgba(248, 113, 113, 0.4) !important;
+}
+
+[data-theme="light"] .encrypt-js-alert.alert-success {
+  background: rgba(236, 253, 243, 0.95) !important;
+  color: #14532d !important;
+  border-color: #86efac !important;
+  box-shadow: 0 12px 32px rgba(20, 83, 45, 0.15) !important;
+}
+
+[data-theme="light"] .encrypt-js-alert.alert-danger {
+  background: rgba(254, 242, 242, 0.95) !important;
+  color: #7f1d1d !important;
+  border-color: #fca5a5 !important;
+  box-shadow: 0 12px 32px rgba(127, 29, 29, 0.15) !important;
+}
+
+/* 7. Glassmorphism Card Pattern */
+.glass-card,
+.encrypt-js-passphrase-window,
+.encrypt-js-base-encrypt-window,
+.encrypt-js-forms-container .form-wrapper {
+  background: var(--bg-card);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-card);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+
+/* Glowing top border on hover */
+.glass-card::before,
+.encrypt-js-passphrase-window::before,
+.encrypt-js-base-encrypt-window::before,
+.encrypt-js-forms-container .form-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--brand), transparent);
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.glass-card:hover,
+.encrypt-js-passphrase-window:hover,
+.encrypt-js-base-encrypt-window:hover,
+.encrypt-js-forms-container .form-wrapper:hover {
+  background: var(--bg-card-hover);
+  border-color: rgba(204, 102, 17, 0.45);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover), var(--shadow-glow);
+}
+
+.glass-card:hover::before,
+.encrypt-js-passphrase-window:hover::before,
+.encrypt-js-base-encrypt-window:hover::before,
+.encrypt-js-forms-container .form-wrapper:hover::before {
+  opacity: 1;
+}
+
+/* 8. Forms Container & Windows Layout */
+.encrypt-js-forms-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  gap: 1.75rem;
+  max-width: 1200px;
+  margin: 0 auto 3.25rem;
+  position: static;
+  height: auto;
+}
+
+.encrypt-js-passphrase-window,
+.encrypt-js-base-encrypt-window,
+.encrypt-js-forms-container .form-wrapper {
+  position: static;
+  left: auto;
+  right: auto;
+  padding: 2rem 1.85rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.form-group {
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Improved Form Labels (Readable Size & High Contrast) */
+.form-group label {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.08rem;                     /* Increased from 0.95rem */
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.2px;
+}
+
+.form-control-file-wrapper {
+  margin-bottom: 1.25rem;
+  text-align: left;
+}
+
+/* 9. Form Inputs (Enhanced Readability) */
+input[type="password"],
+input[type="text"],
+input[type="file"],
+.form-control-file {
+  width: 100%;
+  box-sizing: border-box;
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: var(--radius-btn);
+  color: var(--text-primary);
+  font-family: var(--font-main);
+  font-size: 1.02rem;                     /* Increased from 0.9rem */
+  padding: 0.78rem 1rem;                  /* Roomier padding */
+  transition: all var(--transition);
+  outline: none;
+}
+
+input[type="password"]:focus,
+input[type="text"]:focus,
+.form-control-file:focus {
+  background: var(--input-bg-focus);
+  border-color: var(--brand);
+  box-shadow: 0 0 0 3px var(--brand-glow);
+}
+
+input::placeholder {
+  color: var(--text-muted);
+  font-size: 0.98rem;
+  opacity: 0.85;
+}
+
+/* File input styling */
+input[type="file"] {
+  display: block;
+  cursor: pointer;
+  padding: 0.6rem 0.85rem;
+}
+
+input[type="file"]::file-selector-button {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.04) 100%);
+  border: 1px solid var(--border-glass);
+  color: var(--text-primary);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: var(--font-main);
+  font-weight: 600;
+  font-size: 0.92rem;
+  margin-right: 0.95rem;
+  transition: all var(--transition);
+}
+
+[data-theme="light"] input[type="file"]::file-selector-button {
+  background: #f1ede6;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  color: var(--text-primary);
+}
+
+input[type="file"]::file-selector-button:hover {
+  background: var(--brand);
+  border-color: var(--brand-light);
+  color: #fff;
+}
+
+/* Output Result Badge */
+.output-preview-wrapper {
+  margin-bottom: 1.25rem;
+}
+
+.output-preview-wrapper label {
+  font-size: 0.96rem;                     /* Increased from 0.85rem */
+  color: var(--text-secondary);
+  font-family: var(--font-main);
+  font-weight: 500;
+}
+
+#encDecTextFieldOut {
+  display: inline-block;
+  max-width: 100%;
+  word-break: break-all;
+  padding: 0.45rem 0.85rem;               /* Increased padding */
+  margin-top: 0.5rem;
+  border-radius: 6px;
+  background: var(--output-bg) !important;
+  border: 1px solid var(--output-border) !important;
+  color: var(--output-color) !important;
+  font-family: "JetBrains Mono", Consolas, Monaco, monospace;
+  font-size: 0.98rem;                     /* Increased from 0.85rem */
+  line-height: 1.45;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+}
+
+#encDecTextFieldOut:empty {
+  display: none;
+}
+
+.card-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+
+/* 10. Buttons (Enhanced Sizing & Ergonomics) */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.55rem;               /* Roomier padding */
+  border-radius: var(--radius-btn);
+  font-family: var(--font-main);
+  font-size: 0.98rem;                     /* Increased from 0.88rem */
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all var(--transition);
+  border: none !important;
+  white-space: nowrap;
+  outline: none !important;
+}
+
+/* Primary Button (Orange Brand Gradient) */
+.btn-primary {
+  background: linear-gradient(135deg, var(--brand) 0%, var(--brand-light) 100%) !important;
+  color: #fff !important;
+  box-shadow: 0 4px 18px var(--brand-glow);
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(204, 102, 17, 0.55);
+  color: #fff !important;
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn-primary:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+/* Danger Button (Crimson Gradient) */
+.btn-danger {
+  background: linear-gradient(135deg, #a82323 0%, #dc2626 100%) !important;
+  color: #fff !important;
+  box-shadow: 0 4px 15px rgba(220, 38, 38, 0.35);
+}
+
+.btn-danger:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(220, 38, 38, 0.5);
+  color: #fff !important;
+}
+
+.btn-danger:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+/* Success Button (Emerald Gradient) */
+.btn-success {
+  background: linear-gradient(135deg, #166534 0%, #16a34a 100%) !important;
+  color: #fff !important;
+  box-shadow: 0 4px 15px rgba(22, 163, 74, 0.35);
+}
+
+.btn-success:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(22, 163, 74, 0.5);
+  color: #fff !important;
+}
+
+.btn-success:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+/* 11. Table Section Header & Button Wrapper */
+.table-section-header {
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto 1.25rem;
+}
+
+.encrypt-js-table-header-label,
+h3.encrypt-js-table-header-label {
+  background-color: transparent !important;
+  color: var(--text-primary) !important;
+  font-family: var(--font-display);
+  font-size: 1.65rem;                     /* Increased for clarity */
+  font-weight: 700;
+  letter-spacing: -0.4px;
+  margin: 0 0 0.5rem 0 !important;
+  padding: 0 !important;
+  text-align: center;
+}
+
+.button-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.95rem;
+  max-width: 1200px;
+  margin: 1.25rem auto 2.25rem;
+  padding: 0 !important;
+  text-align: center;
+  flex-wrap: wrap;
+}
+
+/* 12. Table Container & Table */
+#table-container {
+  max-width: 1200px;
+  margin: 0 auto 4.5rem;
+  background: var(--table-bg);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-card);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-card);
+  overflow-x: auto;
+  position: relative;
+  transition: all var(--transition);
+}
+
+#table-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--brand), transparent);
+  opacity: 0.75;
+}
+
+.table,
+table.table {
+  width: 100% !important;
+  max-width: 100% !important;
+  color: var(--text-primary) !important;
+  background-color: transparent !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  border: 1px solid var(--border-glass) !important;
+  border-radius: 10px !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+}
+
+.table th,
+.table td,
+table.table th,
+table.table td {
+  border: 1px solid var(--border-glass) !important;
+  color: var(--text-primary) !important;
+  padding: 0.95rem 1.15rem !important;
+  vertical-align: middle !important;
+  font-family: var(--font-main);
+  font-size: 0.98rem;                     /* Increased */
+}
+
+.table thead th,
+table.table thead th {
+  background: var(--table-th-bg) !important;
+  color: var(--text-primary) !important;
+  font-family: var(--font-display) !important;
+  font-weight: 700 !important;
+  font-size: 0.92rem !important;          /* Increased */
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  border-top: none !important;
+}
+
+.table tbody tr,
+table.table tbody tr {
+  background: transparent !important;
+  transition: background var(--transition);
+}
+
+.table tbody tr:nth-child(odd),
+table.table tbody tr:nth-child(odd) {
+  background: var(--table-row-odd) !important;
+}
+
+.table tbody tr:hover,
+table.table tbody tr:hover {
+  background: var(--table-row-hover) !important;
+}
+
+/* Inputs inside Table Cells */
+.table td input[type="password"],
+.table td input[type="text"] {
+  background: var(--table-input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 6px;
+  color: var(--text-primary);
+  padding: 0.55rem 0.85rem;
+  font-size: 0.96rem;                     /* Increased */
+  font-family: var(--font-main);
+}
+
+.table td:nth-child(1) input[type="password"],
+.table td:nth-child(2) input[type="password"] {
+  width: calc(100% - 38px);
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.table td:nth-child(3) input[type="text"] {
+  width: 100%;
+}
+
+.table td:nth-child(4) {
+  white-space: nowrap;
+  text-align: center;
+}
+
+.table td:nth-child(4) input[type="button"] {
+  padding: 0.48rem 1rem;
+  font-size: 0.88rem;
+  margin: 0 4px;
+  vertical-align: middle;
+}
+
+/* Copy Icon */
+.encrypt-js-copy-icon {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 32px;                            /* Increased from 28px */
+  height: 32px;                           /* Increased from 28px */
+  margin-left: 6px;
+  cursor: pointer;
+  color: var(--brand);
+  background: rgba(204, 102, 17, 0.12);
+  border: 1px solid rgba(204, 102, 17, 0.3);
+  border-radius: 6px;
+  transition: all var(--transition);
+  vertical-align: middle;
+  float: none !important;
+  position: static !important;
+  padding: 0 !important;
+}
+
+.encrypt-js-copy-icon:hover {
+  background: var(--brand);
+  color: #fff;
+  border-color: var(--brand-light);
+  transform: scale(1.12);
+  box-shadow: 0 0 14px var(--brand-glow);
+}
+
+.encrypt-js-copy-icon svg {
+  display: block;
+  width: 16px;                            /* Increased from 14px */
+  height: 16px;
+}
+
+/* 13. Responsive Breakpoints */
+@media (max-width: 768px) {
+  body {
+    padding: 1.5rem 1.15rem 3.5rem;
+  }
+
+  .top-nav-bar {
+    justify-content: center;
+    margin-bottom: 1.25rem;
+  }
+
+  .site-header-wrapper {
+    margin-bottom: 2rem;
+  }
+
+  .encrypt-js-forms-container {
+    grid-template-columns: 1fr;
+    gap: 1.35rem;
+    margin-bottom: 2.25rem;
+  }
+
+  .encrypt-js-passphrase-window,
+  .encrypt-js-base-encrypt-window,
+  .encrypt-js-forms-container .form-wrapper {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .button-wrapper {
+    gap: 0.65rem;
+  }
+
+  .button-wrapper .btn {
+    flex: 1 1 calc(50% - 0.5rem);
+  }
+
+  #table-container {
+    padding: 1rem 0.85rem;
+  }
+
+  .encrypt-js-alert {
+    left: 1rem;
+    right: 1rem;
+    min-width: auto;
+    max-width: calc(100% - 2rem);
+  }
+}

@@ -1,17 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+  <meta charset="UTF-8">
   <title>EncryptJS</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" type="image/x-icon" href="favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/encryptJS-V1.css">
+  <link rel="stylesheet" href="css/encryptJS-V2.css">
   <script type="text/javascript" src="js/crypto-js.min.js"></script>
+  <script>
+    (function () {
+      var savedTheme = localStorage.getItem('encryptjs_theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    })();
+  </script>
 </head>
 
 <body>
-  <h1 class="encrypt-js-header">EncryptJS Trial Version</h1>
+  <div class="top-nav-bar">
+    <button type="button" id="themeToggleBtn" class="theme-toggle-btn" aria-label="Toggle light and dark theme" onclick="toggleTheme()">
+      <span class="theme-toggle-icon" id="themeToggleIcon">☀️</span>
+      <span class="theme-toggle-text" id="themeToggleText">Light Mode</span>
+    </button>
+  </div>
+
+  <div class="site-header-wrapper">
+    <span class="section-label">Client-Side Security Vault</span>
+    <h1 class="encrypt-js-header">EncryptJS <b>β</b> Version</h1>
+  </div>
+
   <div>
     <div id="successMessageBox" class="encrypt-js-alert alert alert-success" role="alert" hidden=true>
       Successfull.
@@ -20,10 +43,12 @@
       Something wrong, error occurred.
     </div>
   </div>
+
   <div class="encrypt-js-forms-container">
-    <div class="encrypt-js-passphrase-window">
+    <div class="encrypt-js-passphrase-window glass-card">
       <form>
         <div class="form-group">
+          <span class="section-label">Master Key</span>
           <label for="userPassPhrase">Input The Passphrase</label>
           <div class="form-control-file-wrapper">
             <input type="password" class="form-control-file" id="userPassPhrase" placeholder="Enter Passphrase">
@@ -33,27 +58,30 @@
         </div>
       </form>
     </div>
-    <div class="encrypt-js-base-encrypt-window">
+
+    <div class="encrypt-js-base-encrypt-window glass-card">
       <form>
         <div class="form-group">
+          <span class="section-label">Quick Utility</span>
           <label for="encDecTextField">Input Plain/Encoded Text below</label>
           <div class="form-control-file-wrapper">
             <input type="password" class="form-control-file" id="encDecTextField" placeholder="Put the Text">
-
           </div>
-          <div>
+          <div class="output-preview-wrapper">
             <label>Encrypted/Decrypted Text Is: <span class="btn-danger" id="encDecTextFieldOut"></span></label>
           </div>
-
-          <button type="button" class="btn btn-primary" onclick="encryptText()">Encrypt</button>
-          <button type="button" class="btn btn-primary" onclick="decryptText()">Decrypt</button>
-
+          <div class="card-actions">
+            <button type="button" class="btn btn-primary" onclick="encryptText()">Encrypt</button>
+            <button type="button" class="btn btn-primary" onclick="decryptText()">Decrypt</button>
+          </div>
         </div>
       </form>
     </div>
-    <div class="form-wrapper">
+
+    <div class="form-wrapper glass-card">
       <form>
         <div class="form-group">
+          <span class="section-label">Data Management</span>
           <label for="fileInput">Select Text file with Data:</label>
           <div class="form-control-file-wrapper">
             <input type="file" class="form-control-file" id="fileInput" accept=".txt" onchange="handleFileSelect(event)"
@@ -64,17 +92,54 @@
       </form>
     </div>
   </div>
-  <h3 class="encrypt-js-table-header-label">Key/Secret Pairs:</h3>
+
+  <div class="table-section-header">
+    <span class="section-label">Encrypted Records</span>
+    <h3 class="encrypt-js-table-header-label">Key/Secret Pairs:</h3>
+  </div>
+
   <div class="button-wrapper">
     <button type="button" class="btn btn-primary" onclick="addNewRecord()">Add New Row</button>
     <button type="button" class="btn btn-danger" onclick="clearLocalStorage()">Clear Data</button>
     <button type="button" class="btn btn-danger" onclick="downLoadData()">Download Data</button>
   </div>
 
-
   <div id="table-container"></div>
 
   <script type="text/javascript" src="js/encryptJS-V1.js"></script>
+  <script type="text/javascript">
+    function applyTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      try {
+        localStorage.setItem('encryptjs_theme', theme);
+      } catch (e) {
+        console.error('LocalStorage unavailable:', e);
+      }
+      var icon = document.getElementById('themeToggleIcon');
+      var text = document.getElementById('themeToggleText');
+      if (icon && text) {
+        if (theme === 'light') {
+          icon.innerHTML = '🌙';
+          text.innerText = 'Dark Mode';
+        } else {
+          icon.innerHTML = '☀️';
+          text.innerText = 'Light Mode';
+        }
+      }
+    }
+
+    function toggleTheme() {
+      var current = document.documentElement.getAttribute('data-theme') || 'dark';
+      var next = current === 'dark' ? 'light' : 'dark';
+      applyTheme(next);
+    }
+
+    // Sync button state on initial render
+    (function () {
+      var saved = localStorage.getItem('encryptjs_theme') || 'dark';
+      applyTheme(saved);
+    })();
+  </script>
 </body>
 
 </html>
